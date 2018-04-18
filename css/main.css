@@ -1,0 +1,93 @@
+@import 'color.css';
+
+* {
+	font-family: "Avenir Next";
+	font-weight: normal;
+}
+
+/*navigation*/
+
+.fixed-to.scrolled {
+	background-color: rgba(255, 255, 255, 0.7) !important;
+	color: #000;
+	transition: background-color 200ms linear;
+	transition: color 200ms linear;
+}
+
+/*header*/
+
+.display-1, .display-2, .display-3, .display-4 {
+	font-weight: lighter;
+	text-transform: uppercase;
+}
+
+.display-1 {
+	font-size: 48px;
+}
+
+.display-2 {
+	font-size: 36px;
+}
+
+/*section*/
+
+section {
+	display: block;
+	min-height: 100vh;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+
+/*home*/
+
+#home {
+	background-color: var(--color3);
+	color: #fff;
+}
+
+.digit {
+	font-size: 36px;
+	font-weight: lighter;
+}
+
+.type {
+	font-weight: lighter;
+}
+
+.highlights {
+	margin-bottom: 30px;
+}
+
+/*search*/
+
+.input-lg {
+	width: 80vw;
+}
+
+#search {
+	background-color: var(--color0);
+}
+
+/*result*/
+
+#result {
+	background-color: var(--color4);
+}
+
+#sd-tab, #dh-tab {
+	color: var(--color3) !important;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+}
+
+#sd-tab.active, #dh-tab.active {
+	background-color: var(--color3) !important;
+	color: white !important;
+}
+
+/*reference*/
+
+#reference {
+	background-color: var(--color1);
+}

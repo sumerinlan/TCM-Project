@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>TCM Project</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/awesomplete.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/main.css">
+
+	<!-- JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.js"></script>
+	<script src="js/awesomplete.js" async></script>
+	<script src="js/main.js" async></script>
+
+</head>
+
+<body>
+
+	<!-- navigation -->
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-fade fixed-top" id="navigation">
+		<div class="container">
+			<div class="col-3">
+				<span class="navbar-brand">TCM Project </span>
+			</div>
+			<div class="col-9">
+				<ul class="navbar-nav d-flex flex-row-reverse">
+					<li class="nav-item"><a href="#reference" class="nav-link">Reference</a>
+					</li>
+					<li class="nav-item"><a href="#result" class="nav-link">Result</a></li>
+					<li class="nav-item"><a href="#search" class="nav-link">Search</a>
+					</li>
+					<li class="nav-item active"><a href="#home" class="nav-link">Home</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- home -->
+
+	<section id="home">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<h1 class="display-1">Our TCM Project</h1>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-md-8">
+								Based on records from ...
+							</div>
+							<div class="col-12 col-md-4">
+								<a class="btn btn-outline-light" href="#search" role="button">Get Started</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-1">
+				</div>
+
+				<div class="col-12 col-md-5">
+					<div class="container">
+						<div class="row">
+							<div class="col-12 col-md-6 highlights animated fadeInDown">
+								<div class="digit">18,000,000</div>
+								<div class="type">Records</div>
+							</div>
+							<div class="col-12 col-md-6 highlights animated fadeInDown">
+								<div class="digit">300</div>
+								<div class="type">Symptoms</div>
+							</div>
+							<div class="col-12 col-md-6 highlights animated fadeInDown">
+								<div class="digit">848</div>
+								<div class="type">Diseases</div>
+							</div>
+							<div class="col-12 col-md-6 highlights animated fadeInDown">
+								<div class="digit">1558</div>
+								<div class="type">Herbs</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- search -->
+
+	<section id="search">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="display-2">Step 1. Select symptoms</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<input type="text" class="form-control awesomplete input-lg" data-list="Ada, Java, JavaScript, Brainfuck, LOLCODE, Node.js, Ruby on Rails" placeholder="Enter list of symptoms">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- result -->
+
+	<section id="result">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="display-2">Step 2. View your results</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-0 col-md-1">
+				</div>
+
+				<div class="col-12 col-md-10 text-center">
+					<ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="sd-tab" data-toggle="tab" href="#sd" role="tab" aria-controls="sd" aria-selected="true">Matched Diseases</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="dh-tab" data-toggle="tab" href="#dh" role="tab" aria-controls="dh" aria-selected="false">Matched Herbs</a>
+						</li>
+					</ul>
+
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="sd" role="tabpanel" aria-labelledby="sd-tab">
+							<div class="container">
+								<div class="row">
+									<div class="col-12 col-md-6">
+										Symptoms
+									</div>
+									<div class="col-12 col-md-6">
+										Diseases
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="dh" role="tabpanel" aria-labelledby="dh-tab">
+							<div class="container">
+								<div class="row">
+									<div class="col-12 col-md-6">
+										Diseases
+									</div>
+									<div class="col-12 col-md-6">
+										Herbs
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-0 col-md-1">
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="section" id="reference">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h2 class="display-2">Reference</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>
