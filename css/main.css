@@ -31,7 +31,7 @@
 
 /*section*/
 
-section {
+.section {
 	display: block;
 	min-height: 100vh;
 	display: flex;
@@ -51,10 +51,6 @@ section {
 	font-weight: lighter;
 }
 
-.type {
-	font-weight: lighter;
-}
-
 .highlights {
 	margin-bottom: 30px;
 }
@@ -62,7 +58,7 @@ section {
 /*search*/
 
 .input-lg {
-	width: 80vw;
+	width: 64vw;
 }
 
 #search {
@@ -84,6 +80,18 @@ section {
 #sd-tab.active, #dh-tab.active {
 	background-color: var(--color3) !important;
 	color: white !important;
+}
+
+#tab10 {
+	color: black;
+}
+
+#tab01, #tab10, #tab11 {
+	list-style: none;
+}
+
+#tab01 li, #tab10 li, #tab11 li {
+	padding: 10px;
 }
 
 /*reference*/

@@ -8,17 +8,71 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="css/awesomplete.css">
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/main.css">
 
 	<!-- JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.js"></script>
 	<script src="js/awesomplete.js" async></script>
+	<script src="js/loadjson.js" async></script>
 	<script src="js/main.js" async></script>
+
+	<script type="text/javascript">
+
+		var sym = "";
+		var dis = {"A": ["a0", "a1", "a2", "a3"], "B": ["b0", "b1", "b2", "b3"], "C": ["c0", "c1", "c2", "c3"]}; // json?
+
+		function render_tab1() {
+			sym = $("#search_sym").val();
+			render_sym(sym);
+		}
+
+		// render symptom
+		function render_sym(sym) {
+			$("#tab00").html("");
+			$("#tab00").append("<p>Based on your symptom <b>" + sym + "</b>, you may have the following diseases:</p>");
+			// render diseases
+			render_dis(dis);
+		}
+
+		function render_dis(dis) {
+			$("#tab01").html("");
+			$("#tab01").append("<ul>");
+			for (d in dis) {
+				$("#tab01").append("<li>" + d + "</li>");
+			}
+			$("#tab01").append("</ul>");
+		}
+
+		function render_tab2() {
+			render_her(dis);
+		}
+
+		function render_her(dis) {
+			$("#tab10").html("");
+			$("#tab11").html("");
+			$("#tab10").append("<div class='nav flex-column nav-pills' id='v-pills-tab' role='tablist' aria-orientation='vertical'>");
+			$("#tab11").append("<div class='tab-content' id='v-pills-tabContent'>");
+			for (d in dis) {
+				// left
+				$("#tab10").append("<a class='nav-link' id='v-pills-" + d + "-tab' data-toggle='pill' href='#v-pills-" + d + "' role='tab' aria-controls='v-pills-" + d + "' aria-selected='false'>" + d + "</a>");
+				// right
+				$("#tab11").append("<ul class='tab-pane fade' id='v-pills-" + d + "' role='tabpanel' aria-labelledby='v-pills-" + d + "-tab'>");
+				for (i in dis[d]) {
+					$("#tab11").append("<li>" + dis[d][i] + "</li>");
+				}
+				$("#tab11").append("</ul>");
+			}
+			$("#tab10").append("</div>");
+			$("#tab11").append("</div>");
+		}
+	</script>
 
 </head>
 
@@ -29,17 +83,14 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-fade fixed-top" id="navigation">
 		<div class="container">
 			<div class="col-3">
-				<span class="navbar-brand">TCM Project </span>
+				<span class="navbar-brand">TCM Project</span>
 			</div>
 			<div class="col-9">
 				<ul class="navbar-nav d-flex flex-row-reverse">
-					<li class="nav-item"><a href="#reference" class="nav-link">Reference</a>
-					</li>
+					<li class="nav-item"><a href="#reference" class="nav-link">Reference</a></li>
 					<li class="nav-item"><a href="#result" class="nav-link">Result</a></li>
-					<li class="nav-item"><a href="#search" class="nav-link">Search</a>
-					</li>
-					<li class="nav-item active"><a href="#home" class="nav-link">Home</a>
-					</li>
+					<li class="nav-item"><a href="#search" class="nav-link">Search</a></li>
+					<li class="nav-item active"><a href="#home" class="nav-link">Home</a></li>
 				</ul>
 			</div>
 		</div>
@@ -47,7 +98,7 @@
 
 	<!-- home -->
 
-	<section id="home">
+	<section id="home" class="section">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-md-6">
@@ -74,19 +125,19 @@
 				<div class="col-12 col-md-5">
 					<div class="container">
 						<div class="row">
-							<div class="col-12 col-md-6 highlights animated fadeInDown">
+							<div class="col-12 col-lg-6 highlights animated fadeInDown">
 								<div class="digit">18,000,000</div>
 								<div class="type">Records</div>
 							</div>
-							<div class="col-12 col-md-6 highlights animated fadeInDown">
-								<div class="digit">300</div>
+							<div class="col-12 col-lg-6 highlights animated fadeInDown">
+								<div class="digit">15129</div>
 								<div class="type">Symptoms</div>
 							</div>
-							<div class="col-12 col-md-6 highlights animated fadeInDown">
+							<div class="col-12 col-lg-6 highlights animated fadeInDown">
 								<div class="digit">848</div>
 								<div class="type">Diseases</div>
 							</div>
-							<div class="col-12 col-md-6 highlights animated fadeInDown">
+							<div class="col-12 col-lg-6 highlights animated fadeInDown">
 								<div class="digit">1558</div>
 								<div class="type">Herbs</div>
 							</div>
@@ -99,7 +150,7 @@
 
 	<!-- search -->
 
-	<section id="search">
+	<section id="search" class="section">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -107,8 +158,11 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-12">
-					<input type="text" class="form-control awesomplete input-lg" data-list="Ada, Java, JavaScript, Brainfuck, LOLCODE, Node.js, Ruby on Rails" placeholder="Enter list of symptoms">
+				<div class="col-12 col-md-10">
+					<input type="text" class="form-control awesomplete input-lg" data-list="" placeholder="Enter list of symptoms" id="search_sym">
+				</div>
+				<div class="col-12 col-md-2">
+					<a class="btn btn-outline-dark" href="#result" role="button" onclick="render_tab1()">Search</a>
 				</div>
 			</div>
 		</div>
@@ -116,7 +170,7 @@
 
 	<!-- result -->
 
-	<section id="result">
+	<section id="result" class="section">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -128,13 +182,13 @@
 				<div class="col-0 col-md-1">
 				</div>
 
-				<div class="col-12 col-md-10 text-center">
-					<ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+				<div class="col-12 col-md-10">
+					<ul class="nav nav-pills nav-fill text-center" id="myTab" role="tablist">
 						<li class="nav-item">
-							<a class="nav-link active" id="sd-tab" data-toggle="tab" href="#sd" role="tab" aria-controls="sd" aria-selected="true">Matched Diseases</a>
+							<a class="nav-link active" id="sd-tab" data-toggle="tab" href="#sd" role="tab" aria-controls="sd" aria-selected="true" onclick="render_tab1()">Matched Diseases</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="dh-tab" data-toggle="tab" href="#dh" role="tab" aria-controls="dh" aria-selected="false">Matched Herbs</a>
+							<a class="nav-link" id="dh-tab" data-toggle="tab" href="#dh" role="tab" aria-controls="dh" aria-selected="false" onclick="render_tab2()">Matched Herbs</a>
 						</li>
 					</ul>
 
@@ -143,10 +197,10 @@
 							<div class="container">
 								<div class="row">
 									<div class="col-12 col-md-6">
-										Symptoms
+										<div id="tab00"></div>
 									</div>
-									<div class="col-12 col-md-6">
-										Diseases
+									<div class="col-12 col-md-6 text-center">
+										<div id="tab01"></div>
 									</div>
 								</div>
 							</div>
@@ -154,11 +208,11 @@
 						<div class="tab-pane fade" id="dh" role="tabpanel" aria-labelledby="dh-tab">
 							<div class="container">
 								<div class="row">
-									<div class="col-12 col-md-6">
-										Diseases
+									<div class="col-12 col-md-6 text-center">
+										<div id="tab10"></div>
 									</div>
-									<div class="col-12 col-md-6">
-										Herbs
+									<div class="col-12 col-md-6 text-center">
+										<div id="tab11"></div>
 									</div>
 								</div>
 							</div>
@@ -178,6 +232,11 @@
 			<div class="row">
 				<div class="col-12 text-center">
 					<h2 class="display-2">Reference</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-center">
+					<p>Ryan 是我们的大佬 xD</p>
 				</div>
 			</div>
 		</div>

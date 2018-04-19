@@ -34,6 +34,7 @@ with open("../data/" + sys.argv[1] + ".txt") as f:
 			# word = line[:k-1].strip()
 		data[word] = index
 		line = f.readline()
+	print(index)
 
 with open("../data/" + sys.argv[1] + ".json", "w") as f:
 	json.dump(data, f, ensure_ascii=False)
