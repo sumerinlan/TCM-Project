@@ -1,0 +1,61 @@
+@import 'color.css';
+
+table, table * {
+	position: relative;
+	border: 0px !important;
+}
+
+/*header*/
+table thead th {
+	color: var(--color3);
+}
+
+table tbody tr {
+	font-size: .8em;
+}
+
+table tbody tr:hover {
+	color: var(--color4);
+	background-color: var(--colorbg);
+	cursor: pointer;
+}
+
+@media screen and (max-width: 575.98px) {
+	table {
+		display: block;
+	}
+	table>*, table tr, table td, table th {
+		display: block;
+		border: 0px !important;
+	}
+	table thead {
+		display: none;
+	}
+	table tbody tr {
+		padding-bottom: 5px;
+	}
+	table tbody tr td {
+		padding-left: 40% !important;
+		line-height: .6 !important;
+	}
+	table tbody tr td:last-child {
+		margin-bottom: 0;
+	}
+	table tbody tr td:before {
+		color: var(--color3);
+		position: absolute;
+		width: 40%;
+		line-height: 1.2;
+		left: 30px;
+		font-size: 1.2em;
+	}
+	table tbody tr td:nth-child(1) {
+		line-height: 2 !important;
+	}
+	table tbody tr td:nth-child(1):before {
+		content: "Diseases";
+	}
+	table tbody tr td:nth-child(2):before {
+		content: "Herbs";
+	}
+}
