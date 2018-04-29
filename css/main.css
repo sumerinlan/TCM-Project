@@ -26,19 +26,20 @@
 
 .display-1, .display-2, .display-3, .display-4 {
 	font-weight: lighter;
+	padding-bottom: .5em;
 	text-transform: uppercase;
 }
 
 .display-1 {
 	font-size: 48px;
-	padding-top: 20px;
-	padding-bottom: 20px;
 }
 
 .display-2 {
 	font-size: 36px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+}
+
+.display-3 {
+	font-size: 24px;
 }
 
 /*section*/
@@ -46,8 +47,8 @@
 .section {
 	display: block;
 	min-height: 100vh;
-	padding-top: 10vh;
-	padding-bottom: 10vh;
+	padding-top: 20vh;
+	padding-bottom: 20vh;
 }
 
 #home, #reference {
@@ -75,12 +76,14 @@
 /*search*/
 
 .input-lg {
-	width: 64vw;
+	width: 100%;
 }
 
 #search {
 	background-color: var(--color0);
 }
+
+
 
 /*reference*/
 

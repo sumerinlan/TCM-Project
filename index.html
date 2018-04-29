@@ -23,20 +23,14 @@
 	<script src="js/awesomplete.js" async></script>
 	<script src="js/loadjson.js" async></script>
 	<script src="js/render.js" async></script>
+	<script src="js/scroll.js" async></script>
 	<script src="js/main.js" async></script>
 
 	<script type="text/javascript">
-		var sym = "";
-		var dis = {
-			"A": ["a0", "a1", "a2", "a3"],
-			"B": ["b0", "b1", "b2", "b3"],
-			"C": ["c0", "c1", "c2", "c3"]
-		}; // json?
-
-		function render_search() {
-			sym = $("#search_sym").val();
-			render_sym(sym);
-		}
+		$(document).ready(function() {
+			$("#show").hide()
+			$("#hide").hide()
+		})
 	</script>
 
 </head>
@@ -46,10 +40,10 @@
 	<!-- navigation -->
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-fade fixed-top" id="navigation">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
 	  	</button>
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+		<div class="collapse navbar-collapse" id="navbarToggler">
 			<span class="navbar-brand mr-auto mt-2 mt-lg-0">
 				TCM Project
 			</span>
@@ -125,22 +119,34 @@
 			</div>
 
 			<div class="row">
-				<div class="input-group">
+				<div class="col-9">
 					<input type="text" class="form-control awesomplete input-lg" data-list="" placeholder="Enter list of symptoms" id="search_sym">
-					<div class="input-group-append">
-						<button class="btn btn-outline-dark" role="button" onclick="render_search()">Search</button>
-					</div>
+				</div>
+				<div class="col-3">
+					<button class="btn btn-outline-dark" role="button" onclick="render_search()" id="search-btn">Search</button>
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row" style="margin-top:5em;">
 				<div class="col-12">
 					<div id="s_res"></div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="container-fluid" id="d_res">
+				<div class="col-12">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12" id="d_res"></div>
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<button class="btn btn-outline-dark btn-sm" role="button" id="show">Show More</button>
+								<button class="btn btn-outline-dark btn-sm" role="button" id="hide">Show Less</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
