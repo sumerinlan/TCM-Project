@@ -3,5 +3,8 @@
 	--color1: rgba(233, 224, 138, 1);
 	--color2: rgba(160, 145, 57, 1);
 	--color3: rgba(41, 66, 49, 1);
+	--color375: rgba(41, 66, 49, .75);
 	--color4: rgba(113, 155, 82, 1);
+	--color475: rgba(113, 155, 82, .75);
+	--colorbg: #f5f5f5;
 }

@@ -3,7 +3,7 @@
 [hidden] { display: none; }
 
 div.awesomplete {
-	display: inline-block;
+	display: block;
 	position: relative;
 }
 

@@ -5,19 +5,28 @@
 	font-weight: normal;
 }
 
+.row {
+	margin: 10px auto;
+}
+
 /*navigation*/
 
-.fixed-to.scrolled {
-	background-color: rgba(255, 255, 255, 0.7) !important;
-	color: #000;
+.fixed-top.scrolled {
+	background-color: var(--color475) !important;
 	transition: background-color 200ms linear;
 	transition: color 200ms linear;
+}
+
+.nav-item {
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 /*header*/
 
 .display-1, .display-2, .display-3, .display-4 {
 	font-weight: lighter;
+	padding-bottom: .5em;
 	text-transform: uppercase;
 }
 
@@ -29,11 +38,20 @@
 	font-size: 36px;
 }
 
+.display-3 {
+	font-size: 24px;
+}
+
 /*section*/
 
 .section {
 	display: block;
 	min-height: 100vh;
+	padding-top: 20vh;
+	padding-bottom: 20vh;
+}
+
+#home, #reference {
 	display: flex;
   	align-items: center;
   	justify-content: center;
@@ -58,41 +76,14 @@
 /*search*/
 
 .input-lg {
-	width: 64vw;
+	width: 100%;
 }
 
 #search {
 	background-color: var(--color0);
 }
 
-/*result*/
 
-#result {
-	background-color: var(--color4);
-}
-
-#sd-tab, #dh-tab {
-	color: var(--color3) !important;
-	margin-top: 5vh;
-	margin-bottom: 5vh;
-}
-
-#sd-tab.active, #dh-tab.active {
-	background-color: var(--color3) !important;
-	color: white !important;
-}
-
-#tab10 {
-	color: black;
-}
-
-#tab01, #tab10, #tab11 {
-	list-style: none;
-}
-
-#tab01 li, #tab10 li, #tab11 li {
-	padding: 10px;
-}
 
 /*reference*/
 
