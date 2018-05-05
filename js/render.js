@@ -31,7 +31,7 @@ function render_sym(sym) {
 	// 	success: function(response) {
 	// 		render_dis(response);
 	// 	}
-	$.get("http://192.168.1.146:8080", {symptoms: sym}, function(data) {
+	$.get("http://127.0.0.1:8080", {symptoms: sym}, function(data) {
 		render_dis(data);
 	});
 }

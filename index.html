@@ -31,14 +31,14 @@
 
 		function add_sym() {
 			sym = $("#search_sym").val();
-			var callButt = document.getElementById("search_btn");
-			var userinput = document.getElementById("select");
 			select_input += (sym + '\'');
+			var userinput = document.getElementById("select");
 			userinput.innerHTML = select_input;
-			console.log(select_input);
+			$('#search_sym').val('');
 		}
 
 		function del_sym() {
+			select_input = '';
 			var userinput = document.getElementById("select");
 			userinput.innerHTML = "";
 		}
@@ -59,7 +59,7 @@
 				TCM Project
 			</span>
 			<ul class="navbar-nav my-2 my-lg-0">
-				<li class="nav-item active" id="navhome"><a href="#home" class="nav-link">Home</a></li>
+				<li class="nav-item" id="navhome"><a href="#home" class="nav-link">Home</a></li>
 				<li class="nav-item" id="navsearch"><a href="#search" class="nav-link">Search</a></li>
 				<li class="nav-item" id="navreference"><a href="#reference" class="nav-link">Reference</a></li>
 			</ul>
@@ -129,9 +129,9 @@
 			<form>
 				<div class="form-group row">
 					<input type="text" class="form-control awesomplete input-lg" data-list="" placeholder="Enter list of symptoms" id="search_sym" style="max-width:50vw;">
-					<button class="btn btn-outline-dark" role="button" onclick="add_sym()" id="add_btn">Add</button>
-					<button class="btn btn-outline-dark" role="button" onclick="del_sym()" id="clear_btn">Clear</button>
-					<button class="btn btn-outline-dark" role="button" onclick="render_search()" id="search_btn">Search</button>
+					<span class="btn btn-outline-dark" onclick="add_sym()" id="add_btn">Add</span>
+					<span class="btn btn-outline-dark" onclick="del_sym()" id="clear_btn">Clear</span>
+					<span class="btn btn-outline-dark" onclick="render_search()" id="search_btn">Search</span>
 				</div>
 			</form>
 
