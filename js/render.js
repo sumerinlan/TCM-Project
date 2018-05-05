@@ -1,30 +1,38 @@
 function render_search() {
-	sym = $("#search_sym").val();
-	render_sym(sym);
+	console.log("render_search");
+	var sym = $("#select").text();
+	if (sym != "") {
+		$("#show").css('display', 'inline-block');
+		$("#hide").css('display', 'inline-block');
+		render_sym(sym);
+	}
+	else {
+		$("#show").css('display', 'none');
+		$("#hide").css('display', 'none');
+		$("#s_res").html("");
+		$("#d_res").html("");
+	}
+	$('html, body').animate({
+		scrollTop: $('#table-btn').offset().top - $(window).height() / 2
+	}, 500);
 }
 
 // render symptom
 function render_sym(sym) {
+	console.log("render_sym");
 	$("#s_res").html("");
 	$("#s_res").append("<p>Based on your symptom <b>" + sym + "</b>, you may have the following diseases:</p>");
-	// var dis = {
-	// 	"疾病的名字1" : ["对应的症状", "对应的症状", "对应的症状", "对应的症状"],
-	// 	"疾病的名字2" : ["对应的症状", "对应的症状", "对应的症状", "对应的症状"],
-	// 	"疾病的名字3" : ["对应的症状", "对应的症状", "对应的症状", "对应的症状"],
-	// 	"疾病的名字4" : ["对应的症状", "对应的症状", "对应的症状", "对应的症状"],
-	// 	"疾病的名字5" : ["对应的症状", "对应的症状", "对应的症状", "对应的症状"],
-	// 	"疾病的名字6" : ["对应的症状", "对应的症状", "对应的症状", "对应的症状"],
-	// 	"疾病的名字7" : ["对应的症状", "对应的症状", "对应的症状", "对应的症状"]
-	// }
 
-	$.ajax({
-		url: "https://api.myjson.com/bins/1g0d33",
-		contentType: "application/json; charset=UTF-8",
-		dataType: "JSON",
-		type: "GET",
-		success: function(response) {
-			render_dis(response);
-		}
+	// $.ajax({
+	// 	url: "https://api.myjson.com/bins/1g0d33",
+	// 	contentType: "application/json; charset=UTF-8",
+	// 	dataType: "JSON",
+	// 	type: "GET",
+	// 	success: function(response) {
+	// 		render_dis(response);
+	// 	}
+	$.get("http://192.168.1.146:8080", {symptoms: sym}, function(data) {
+		render_dis(data);
 	});
 }
 
@@ -46,7 +54,7 @@ function render_dis(dis) {
 	var after = `</tbody></table>`
 
 	var content = "";
-	var count = 0; // set row count
+
 	$.each(dis, function(key, value) {
 
 		var herbs = "";
@@ -54,55 +62,48 @@ function render_dis(dis) {
 			herbs = herbs + '<td>' + value[j] + '</td>';
 		}
 
-		count = count + 1;
-		content = content + '<tr id=' + count + '><td scope="row">' + key + '</td>' + herbs + '</tr>';
+		content = content + '<tr><td scope="row">' + key + '</td>' + herbs + '</tr>';
 	});
 	$("#d_res").append(prev + content + after);
 
-	// table show and hide
 	var min_fields = 1;
-	var max_fields = 7;
+	var max_fields = 10;
 	var stepsize = 3;
 	var itemsCount = stepsize;
-	// console.log("Count: " + itemsCount);
-	// hide all tr greater than itemsCount
+
+	//hide all tr greater than page length
 	var selector = "tr:gt(" + itemsCount + ")";
 	$(selector).hide();
-	// reset button
-	$("#show").show()
-	$("#hide").show()
-	$("#show").attr("disabled", false);
-	$("#hide").attr("disabled", false);
 
 	$("#show").not(':disabled').click(function(e) {
 		e.preventDefault();
+		// move
+		$('html, body').animate({
+			scrollTop: $('#table-btn').offset().top - $(window).height() / 2
+		}, 500);
+		// change count
 		itemsCount = Math.min(max_fields, itemsCount + stepsize);
-		// show all tr smaller than (itemsCount + 1)
-		var selector = "tr:lt(" + (itemsCount + 1) + ")";
-		$(selector).show();
-		// reset button
 		if (itemsCount >= max_fields) {
 			$(this).attr("disabled", true);
 		}
+		var selector = "tr:lt(" + (itemsCount + 1) + ")";
+		$(selector).show();
 		$("#hide").attr("disabled", false);
-		// console.log("Count: " + itemsCount);
-
-		scrollToTable();
 	});
 
 	$("#hide").not(':disabled').click(function(e) {
 		e.preventDefault();
+		// move
+		$('html, body').animate({
+			scrollTop: $('#table-btn').offset().top - $(window).height() / 2
+		}, 500);
+		// change count
 		itemsCount = Math.max(min_fields, itemsCount - stepsize);
-		// hide all tr greater than itemsCount
-		var selector = "tr:gt(" + itemsCount + ")";
-		$(selector).hide();
-		if (itemsCount <= min_fields) {
+		if (itemsCount <= 0) {
 			$(this).attr("disabled", true);
 		}
-		// reset button
+		var selector = "tr:gt(" + itemsCount + ")";
+		$(selector).hide();
 		$('#show').attr("disabled", false);
-		// console.log("Count: " + itemsCount);
-
-		scrollToTable();
 	});
 }

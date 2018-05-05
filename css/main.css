@@ -32,10 +32,14 @@
 
 .display-1 {
 	font-size: 48px;
+	/*padding-top: 20px;*/
+	/*padding-bottom: 20px;*/
 }
 
 .display-2 {
 	font-size: 36px;
+	/*padding-top: 20px;*/
+	/*padding-bottom: 20px;*/
 }
 
 .display-3 {
@@ -82,8 +86,6 @@
 #search {
 	background-color: var(--color0);
 }
-
-
 
 /*reference*/
 

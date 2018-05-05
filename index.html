@@ -22,15 +22,26 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.js"></script>
 	<script src="js/awesomplete.js" async></script>
 	<script src="js/loadjson.js" async></script>
-	<script src="js/render.js" async></script>
 	<script src="js/scroll.js" async></script>
+	<script src="js/render.js" async></script>
 	<script src="js/main.js" async></script>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#show").hide()
-			$("#hide").hide()
-		})
+	<script>
+		var select_input = '';
+
+		function add_sym() {
+			sym = $("#search_sym").val();
+			var callButt = document.getElementById("search_btn");
+			var userinput = document.getElementById("select");
+			select_input += (sym + '\'');
+			userinput.innerHTML = select_input;
+			console.log(select_input);
+		}
+
+		function del_sym() {
+			var userinput = document.getElementById("select");
+			userinput.innerHTML = "";
+		}
 	</script>
 
 </head>
@@ -40,10 +51,10 @@
 	<!-- navigation -->
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-fade fixed-top" id="navigation">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
 	  	</button>
-		<div class="collapse navbar-collapse" id="navbarToggler">
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<span class="navbar-brand mr-auto mt-2 mt-lg-0">
 				TCM Project
 			</span>
@@ -80,10 +91,7 @@
 					</div>
 				</div>
 
-				<div class="col-12 col-lg-1">
-				</div>
-
-				<div class="col-12 col-lg-5">
+				<div class="col-12 col-lg-6">
 					<div class="container">
 						<div class="row">
 							<div class="col-12 col-sm-6 highlights animated fadeInDown">
@@ -118,33 +126,33 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-9">
-					<input type="text" class="form-control awesomplete input-lg" data-list="" placeholder="Enter list of symptoms" id="search_sym">
+			<form>
+				<div class="form-group row">
+					<input type="text" class="form-control awesomplete input-lg" data-list="" placeholder="Enter list of symptoms" id="search_sym" style="max-width:50vw;">
+					<button class="btn btn-outline-dark" role="button" onclick="add_sym()" id="add_btn">Add</button>
+					<button class="btn btn-outline-dark" role="button" onclick="del_sym()" id="clear_btn">Clear</button>
+					<button class="btn btn-outline-dark" role="button" onclick="render_search()" id="search_btn">Search</button>
 				</div>
-				<div class="col-3">
-					<button class="btn btn-outline-dark" role="button" onclick="render_search()" id="search-btn">Search</button>
+			</form>
+
+			<div class="row">
+				<div class="col-12" id="select">
 				</div>
 			</div>
 
-			<div class="row" style="margin-top:5em;">
+			<div class="row" style="margin-top:10vh;">
 				<div class="col-12">
 					<div id="s_res"></div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-12">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12" id="d_res"></div>
-						</div>
-
-						<div class="row">
-							<div class="col-12">
-								<button class="btn btn-outline-dark btn-sm" role="button" id="show">Show More</button>
-								<button class="btn btn-outline-dark btn-sm" role="button" id="hide">Show Less</button>
-							</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12" id="d_res"></div>
+						<div class="col-12" id="table-btn">
+							<button type="button" class="btn btn-outline-dark btn-sm" id="show" style="display:none;">Show More</button>
+							<button type="button" class="btn btn-outline-dark btn-sm" id="hide" style="display:none;">Show Less</button>
 						</div>
 					</div>
 				</div>
