@@ -54,6 +54,7 @@ function render_dis(dis) {
 	var after = `</tbody></table>`
 
 	var content = "";
+
 	$.each(dis, function(key, value) {
 
 		var herbs = "";
