@@ -1,5 +1,6 @@
 function render_search() {
-	sym = $("#search_sym").val();
+	console.log("render_search");
+	var sym = $("#select").text();
 	if (sym != "") {
 		$("#show").css('display', 'inline-block');
 		$("#hide").css('display', 'inline-block');
@@ -12,23 +13,26 @@ function render_search() {
 		$("#d_res").html("");
 	}
 	$('html, body').animate({
-		scrollTop: $('#show').offset().top - $(window).height() / 2
+		scrollTop: $('#table-btn').offset().top - $(window).height() / 2
 	}, 500);
 }
 
 // render symptom
 function render_sym(sym) {
+	console.log("render_sym");
 	$("#s_res").html("");
 	$("#s_res").append("<p>Based on your symptom <b>" + sym + "</b>, you may have the following diseases:</p>");
 
-	$.ajax({
-		url: "https://api.myjson.com/bins/1g0d33",
-		contentType: "application/json; charset=UTF-8",
-		dataType: "JSON",
-		type: "GET",
-		success: function(response) {
-			render_dis(response);
-		}
+	// $.ajax({
+	// 	url: "https://api.myjson.com/bins/1g0d33",
+	// 	contentType: "application/json; charset=UTF-8",
+	// 	dataType: "JSON",
+	// 	type: "GET",
+	// 	success: function(response) {
+	// 		render_dis(response);
+	// 	}
+	$.get("http://192.168.1.146:8080", {symptoms: sym}, function(data) {
+		render_dis(data);
 	});
 }
 
@@ -62,7 +66,7 @@ function render_dis(dis) {
 	$("#d_res").append(prev + content + after);
 
 	var min_fields = 1;
-	var max_fields = 7;
+	var max_fields = 10;
 	var stepsize = 3;
 	var itemsCount = stepsize;
 
@@ -72,6 +76,11 @@ function render_dis(dis) {
 
 	$("#show").not(':disabled').click(function(e) {
 		e.preventDefault();
+		// move
+		$('html, body').animate({
+			scrollTop: $('#table-btn').offset().top - $(window).height() / 2
+		}, 500);
+		// change count
 		itemsCount = Math.min(max_fields, itemsCount + stepsize);
 		if (itemsCount >= max_fields) {
 			$(this).attr("disabled", true);
@@ -79,14 +88,15 @@ function render_dis(dis) {
 		var selector = "tr:lt(" + (itemsCount + 1) + ")";
 		$(selector).show();
 		$("#hide").attr("disabled", false);
-		// move
-		$('html, body').animate({
-			scrollTop: $(this).offset().top - $(window).height() / 2
-		}, 500);
 	});
 
 	$("#hide").not(':disabled').click(function(e) {
 		e.preventDefault();
+		// move
+		$('html, body').animate({
+			scrollTop: $('#table-btn').offset().top - $(window).height() / 2
+		}, 500);
+		// change count
 		itemsCount = Math.max(min_fields, itemsCount - stepsize);
 		if (itemsCount <= 0) {
 			$(this).attr("disabled", true);
@@ -94,9 +104,5 @@ function render_dis(dis) {
 		var selector = "tr:gt(" + itemsCount + ")";
 		$(selector).hide();
 		$('#show').attr("disabled", false);
-		// move
-		$('html, body').animate({
-			scrollTop: $(this).offset().top - $(window).height() / 2
-		}, 500);
 	});
 }

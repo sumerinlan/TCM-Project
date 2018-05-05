@@ -26,16 +26,22 @@
 	<script src="js/render.js" async></script>
 	<script src="js/main.js" async></script>
 
-	<script type="text/javascript">
-		// function render_search() {
-		// 	$("#show").css('display', 'inline-block');
-		// 	$("#hide").css('display', 'inline-block');
-		// 	sym = $("#search_sym").val();
-		// 	render_sym(sym);
-		// 	$('html, body').animate({
-		//     	scrollTop: $('#show').offset().top - $(window).height() / 2
-		// 	}, 500);
-		// }
+	<script>
+		var select_input = '';
+
+		function add_sym() {
+			sym = $("#search_sym").val();
+			var callButt = document.getElementById("search_btn");
+			var userinput = document.getElementById("select");
+			select_input += (sym + '\'');
+			userinput.innerHTML = select_input;
+			console.log(select_input);
+		}
+
+		function del_sym() {
+			var userinput = document.getElementById("select");
+			userinput.innerHTML = "";
+		}
 	</script>
 
 </head>
@@ -123,9 +129,16 @@
 			<form>
 				<div class="form-group row">
 					<input type="text" class="form-control awesomplete input-lg" data-list="" placeholder="Enter list of symptoms" id="search_sym" style="max-width:50vw;">
-					<button class="btn btn-outline-dark" role="button" onclick="render_search()">Search</button>
+					<button class="btn btn-outline-dark" role="button" onclick="add_sym()" id="add_btn">Add</button>
+					<button class="btn btn-outline-dark" role="button" onclick="del_sym()" id="clear_btn">Clear</button>
+					<button class="btn btn-outline-dark" role="button" onclick="render_search()" id="search_btn">Search</button>
 				</div>
 			</form>
+
+			<div class="row">
+				<div class="col-12" id="select">
+				</div>
+			</div>
 
 			<div class="row" style="margin-top:10vh;">
 				<div class="col-12">
@@ -137,7 +150,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-12" id="d_res"></div>
-						<div class="col-12">
+						<div class="col-12" id="table-btn">
 							<button type="button" class="btn btn-outline-dark btn-sm" id="show" style="display:none;">Show More</button>
 							<button type="button" class="btn btn-outline-dark btn-sm" id="hide" style="display:none;">Show Less</button>
 						</div>
