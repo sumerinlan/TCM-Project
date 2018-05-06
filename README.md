@@ -9,7 +9,7 @@ Our project are composed of two main parts - the back end data processing and fr
 * ### Model training
 The training data files are located under `data\`. The main training data set is `data\HIS_Tuple.txt` where each line is of the form `diseases symptoms herbs` where the each entry is indexes separated by `:`. The mapping from index to actual diseases, symptoms, and herbs can be found at `dis_dct.txt`, `sym_dct.txt`, and `herb_dict.txt`. We follow train our model following the EM algorithm provided in the paper. Specifically, we have the following steps for training:
    * E step:
-      * ![E Step](./E_Step.png)
+      * ![E Step](https://github.com/sumerinlan/TCM-Project/blob/master/E_step.png)
 
    * M step:
-      *   ![M Step](https://github.com/sumerinlan/TCM-Project/blob/master/M_step.png =50x)
+      *   ![M Step](https://github.com/sumerinlan/TCM-Project/blob/master/M_step.png)
