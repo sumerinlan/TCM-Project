@@ -29,3 +29,4 @@ Our project are composed of two main parts - the back end data processing and fr
 Our entire application is developed using `python3`. In order to run the application, one would need to run the server first by executing `python3 src/server.py`. To access the front end user interface of our application, simply open `index.html` using one of the web browser.
 
 ## Contribution
+We split the work such than three team members work on the back end and two team member implement the front end. Ruiqian Yao, Qianqian Li, and Weiru Chen are responsible for data processing and model training. Qile Zhi and Yajie Chu are responsible for front end user interface design. All team member read and studied the paper
