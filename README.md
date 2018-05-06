@@ -11,4 +11,4 @@ The training data files are located under `data\`. The main training data set is
    * E step:
       * ![E Step](./E_Step.png)
    * M step:
-      *   ![M Step](./M_Step.png)
+      *   ![M Step](https://github.com/sumerinlan/TCM-Project/blob/master/M_step.png)
