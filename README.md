@@ -13,3 +13,5 @@ The training data files are located under `data\`. The main training data set is
 
    * M step:
       *   ![M Step](https://github.com/sumerinlan/TCM-Project/blob/master/M_step.png)
+
+Since the while data set contains 9000+ records and there are about 10k possible values for diseases, herbs, and symptoms, the computation overhead is too much. In stead, we extracted top 93 popular diseases, most frequent 500 symptoms and herbs and first 985 records as the training data for our model.
